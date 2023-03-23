@@ -32,5 +32,4 @@ std::set<int> GeneratePrimeNumbersSet(int upperBound)
 {
 	std::set<int> primeNumbers;
 	std::vector<bool> isPrimeNums;
-	isPrimeNums.r
 }
