@@ -9,5 +9,9 @@ int main(int argc, char* argv[]) {
 		return EXIT_FAILURE;
 	}
 
+	std::set<int> primeNumbers = GeneratePrimeNumbersSet(*upperBound);
+	std::copy(primeNumbers.begin(), primeNumbers.end(),
+		std::ostream_iterator<int>(std::cout, "\n"));
 
+	return EXIT_SUCCESS;
 }

@@ -1,5 +1,5 @@
 #include "Functions.h"
-
+#include <cmath>
 
 std::optional<int> ParseArgs(int argc, char** argv)
 {
@@ -31,5 +31,32 @@ std::optional<int> ParseArgs(int argc, char** argv)
 std::set<int> GeneratePrimeNumbersSet(int upperBound)
 {
 	std::set<int> primeNumbers;
-	std::vector<bool> isPrimeNums;
+	if (upperBound < 2)
+	{
+		return primeNumbers;
+	}
+	std::vector<bool> sieve(upperBound + 1, true);
+	int screeningLimit = static_cast<int>(std::sqrt(upperBound));
+	for (int i = 2; i <= screeningLimit; i++)
+	{
+		if (sieve[i])
+		{
+			for (int k = 0, j = i * i; j <= upperBound; j += i)
+			{
+				if (sieve[j])
+				{
+					sieve[j] = !sieve[i];
+				}
+				k++;
+			}
+		}
+	}
+	for (int i = 2; i <= upperBound; i++)
+	{
+		if (sieve[i])
+		{
+			primeNumbers.insert(primeNumbers.end(), i);
+		}
+	}
+	return primeNumbers;
 }
