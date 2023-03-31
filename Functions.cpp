@@ -41,13 +41,12 @@ std::set<int> GeneratePrimeNumbersSet(int upperBound)
 	{
 		if (sieve[i])
 		{
-			for (int k = 0, j = i * i; j <= upperBound; j += i)
+			for (int j = i * i; j <= upperBound; j += i)
 			{
 				if (sieve[j])
 				{
-					sieve[j] = !sieve[i];
+					sieve[j] = !sieve[j];
 				}
-				k++;
 			}
 		}
 	}
